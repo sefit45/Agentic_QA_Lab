@@ -1,0 +1,25 @@
+{
+  "synthetic": true,
+  "page_id": "CONF-1001",
+  "title": "Synthetic mobile activation and first bill specification",
+  "url": "https://confluence.example.invalid/pages/CONF-1001",
+  "version": "1",
+  "updated_at": "2026-10-23T04:00:00+03:00",
+  "sections": [
+    {
+      "id": "CATALOG",
+      "heading": "Synthetic catalog and billing cycle",
+      "text": "DEMO-VOICE-100 is a synthetic EUR offer: full-cycle subscription fee 20.00, 6000 included domestic voice seconds, then EUR 0.10 per minute charged per second. Aggregate excess duration across the cycle and round the final excess charge to two decimal places using ROUND_HALF_UP. Activate at 2026-01-01T00:00:00Z; first cycle is [2026-01-01T00:00:00Z, 2026-02-01T00:00:00Z). No proration, discounts, activation fee or tax in this fixture. Only domestic voice is supported. Baseline calls are 60, 120 and 180 seconds within the cycle; additional boundary cases should be designed. Calculate money with decimal arithmetic. These rules are lab decisions, not real operator tariffs."
+    },
+    {
+      "id": "MAPPING",
+      "heading": "System mapping and unverified real-world references",
+      "text": "The lab will expose separate Charging, Billing and SAP adapters with documented synthetic IDs. Do not assume their IDs are identical. The names AGD1_SUBSCRIBER_KEY and agd1_subscriber_dest were supplied as professional references only: actual schema, columns, joins and semantics are not provided. Do not generate executable SQL for them. SAP records a synthetic financial posting linked to bill ID and total; accounting detail is outside this fixture. A missing or rejected required posting is a separate failed or blocked check, even if the bill notification succeeds."
+    },
+    {
+      "id": "NOTIFICATION",
+      "heading": "First bill ready and delivery evidence",
+      "text": "The synthetic bill is ready only when finalized and its document can be retrieved. Notification target is a local simulated inbox, never a real email address or phone number. Distinguish event creation, send attempt and inbox receipt. A stable bill-ready event ID supports idempotency for a repeated event. Failure retry limits, billing rerun behavior and the downstream propagation deadline are not yet specified and require clarification. No rule requires SAP confirmation before notification in this lab."
+    }
+  ]
+}

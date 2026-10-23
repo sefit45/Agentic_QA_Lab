@@ -1,0 +1,18 @@
+# Local Python environment
+.venv/
+
+# Python generated files
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Local secrets and settings
+.env
+.env.*
+!.env.example
+
+# Generated build artifacts
+dist/
+build/
+*.egg-info/
+outputs/

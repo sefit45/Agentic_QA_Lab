@@ -1,0 +1,22 @@
+{
+  "synthetic": true,
+  "key": "TELCO-101",
+  "summary": "Private postpaid activation through first bill ready notification",
+  "description": "A service agent activates a private customer with a mobile bundle. Validate provisioning, voice usage processing, the first bill and its notification. All systems are simulated. This is not a Vodafone or Amdocs specification.",
+  "url": "https://jira.example.invalid/browse/TELCO-101",
+  "version": "fixture-1",
+  "updated_at": "2026-10-23T04:00:00+03:00",
+  "confluence_page_ids": ["CONF-1001"],
+  "requirements": [
+    {"id": "REQ-001", "text": "An authorized service agent can activate a new private postpaid customer with the DEMO-VOICE-100 offer defined in the linked catalog fixture. Capture customer, account, subscriber, offer and order references."},
+    {"id": "REQ-002", "text": "Verify required subscriber and offer relationships in simulated Charging and customer/account/offer relationships in simulated Billing against the mapping. Frontend success alone does not prove completion."},
+    {"id": "REQ-003", "text": "Generate synthetic voice usage for the activated subscriber. Each event must retain its unique usage ID, subscriber reference, UTC start time, duration and destination category."},
+    {"id": "REQ-004", "text": "Reconcile submitted usage with processed usage. Resubmitting the same usage ID must not increase logical usage or charges twice."},
+    {"id": "REQ-005", "text": "Verify included voice consumption and excess charges against the linked synthetic catalog rules using an independent deterministic expected-value calculation."},
+    {"id": "REQ-006", "text": "Run the first bill for the configured cycle. Verify the customer/account, bill period, subscription fee, usage charges, total and available bill document. A billing job success alone is insufficient."},
+    {"id": "REQ-007", "text": "Verify a simulated SAP financial posting associated with the bill. SAP posting and bill notification are separately observable outcomes; no fixed ordering is required by this fixture."},
+    {"id": "REQ-008", "text": "Emit First Bill Ready Notification only after the bill is finalized and its document is available. Verify correct customer, account, bill ID and period and receipt in the simulated inbox. Reprocessing the same bill-ready event must not create another logical notification."},
+    {"id": "REQ-009", "text": "Downstream updates must complete promptly. The specification does not yet define a maximum propagation time; request clarification instead of inventing a deadline."},
+    {"id": "REQ-010", "text": "Record sanitized evidence and traceability for each check. Distinguish pass, fail, blocked and not applicable. Do not execute arbitrary model-generated SQL."}
+  ]
+}
